@@ -13,7 +13,6 @@ builder.Services.AddControllers();
 var mongoDbSettings = builder.Configuration.GetSection("MongoDBSettings").Get<MongoDBSettings>();
 var client = new MongoClient(mongoDbSettings!.ConnectionString);
 builder.Services.Configure <MongoDBSettings> (builder.Configuration.GetSection("MongoDBSettings"));
-
 builder.Services.AddDbContext<StudentDatabaseContext>(option => option.UseMongoDB(client,mongoDbSettings!.DatabaseName));
 
 builder.Services.AddScoped<StudentDatabaseContext>();

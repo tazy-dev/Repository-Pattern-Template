@@ -18,7 +18,7 @@ namespace Repository_Pattern_Template.Controllers
         }
         // GET: api/<StudentController>
         [HttpGet]
-        public IEnumerable<Student> Get() => _studentRepository.GetAllStudents();
+        public  IEnumerable<Student> Get() => _studentRepository.GetAllStudents();
         
 
         // GET api/<StudentController>/5

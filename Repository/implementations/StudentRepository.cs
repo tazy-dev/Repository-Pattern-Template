@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MongoDB.Bson;
 using Repository_Pattern_Template.Data;
 using Repository_Pattern_Template.Models;
 using Repository_Pattern_Template.Repository.Interfaces;
@@ -15,6 +16,9 @@ namespace Repository_Pattern_Template.Repository.implementations
         }
         public void AddStudent(Student newStudent)
         {
+            if (newStudent.Id == null) { 
+            newStudent.Id = ObjectId.GenerateNewId().ToString();
+                    }
             _studentContext.Students.Add(newStudent);
 
             _studentContext.SaveChanges();
@@ -33,7 +37,7 @@ namespace Repository_Pattern_Template.Repository.implementations
 
         public  IEnumerable<Student> GetAllStudents()
         {
-             return _studentContext.Students.OrderBy(c => c.Id).AsNoTracking().AsEnumerable<Student>();
+             return  _studentContext.Students.OrderBy(c => c.Id).AsNoTracking().AsEnumerable<Student>();
         }
 
         public Student? GetStudentById(string id)
