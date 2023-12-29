@@ -10,10 +10,7 @@ namespace Repository_Pattern_Template.Data
         public StudentDatabaseContext(DbContextOptions options) : base(options) 
         {
         }
-        //public static StudentDatabaseContext Create(IMongoDatabase database) =>
-        //new(new DbContextOptionsBuilder<StudentDatabaseContext>()
-        //    .UseMongoDB(database.Client, database.DatabaseNamespace.DatabaseName)
-        //    .Options);
+        
         public DbSet<Student> Students { get; init; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
